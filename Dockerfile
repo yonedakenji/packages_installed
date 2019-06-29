@@ -56,6 +56,7 @@ RUN mkdir /package && \
 RUN cd /tmp && \
     unzip syslog-ng-${SYSLOGNG_VER}.zip && \
     cd syslog-ng-syslog-ng-${SYSLOGNG_VER} && \
+    ./autogen.sh && \
     ./configure --prefix=/usr/local --enable-json=no && \
     make && \
     make install
