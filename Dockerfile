@@ -54,8 +54,8 @@ RUN mkdir /package && \
 
 ### make syslog-ng. ###
 RUN cd /tmp && \
-    unzip syslog-ng-${SYSLOGNG_VER}.zip && \
-    cd syslog-ng-${SYSLOGNG_VER} && \
+    unzip syslog-ng-syslog-ng-${SYSLOGNG_VER}.zip && \
+    cd syslog-ng-syslog-ng-${SYSLOGNG_VER} && \
     ./configure --prefix=/usr/local --enable-json=no && \
     make && \
     make install
