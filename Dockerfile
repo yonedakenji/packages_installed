@@ -9,9 +9,9 @@ ARG JDK_VER=1.8.0
 
 WORKDIR /tmp
 
-RUN curl -OL https://www.python.org/ftp/python/${PYTHON_VER}/Python-${PYTHON_VER}.tgz && \
-    curl -OL http://smarden.org/runit/runit-${RUNIT_VER}.tar.gz && \
-    curl -OL https://github.com/balabit/syslog-ng/archive/syslog-ng-${SYSLOGNG_VER}.zip
+RUN curl -L https://www.python.org/ftp/python/${PYTHON_VER}/Python-${PYTHON_VER}.tgz -o Python-${PYTHON_VER}.tgz && \
+    curl -L http://smarden.org/runit/runit-${RUNIT_VER}.tar.gz -o runit-${RUNIT_VER}.tar.gz && \
+    curl -L https://github.com/balabit/syslog-ng/archive/syslog-ng-${SYSLOGNG_VER}.zip -o syslog-ng-${SYSLOGNG_VER}.zip
 
 ### runit needs these packages. ###
 RUN rpm --rebuilddb && \
@@ -54,8 +54,8 @@ RUN mkdir /package && \
 
 ### make syslog-ng. ###
 RUN cd /tmp && \
-    unzip syslog-ng-syslog-ng-${SYSLOGNG_VER}.zip && \
-    cd syslog-ng-syslog-ng-${SYSLOGNG_VER} && \
+    unzip syslog-ng-${SYSLOGNG_VER}.zip && \
+    cd syslog-ng-${SYSLOGNG_VER} && \
     ./configure --prefix=/usr/local --enable-json=no && \
     make && \
     make install
