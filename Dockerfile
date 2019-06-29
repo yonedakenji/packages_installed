@@ -31,7 +31,7 @@ RUN rpm --rebuilddb && \
 
 ### install utilities. ###
 #   mysql_install_db need perl.
-    perl.x86_64 patch.x86_64 perl-Data-Dumper.x86_64 bc.x86_64 expect.x86_64 
+    perl.x86_64 patch.x86_64 perl-Data-Dumper.x86_64 bc.x86_64 expect.x86_64 unzip.x86_64
 
 ### install runit. ###
 RUN mkdir /package && \
