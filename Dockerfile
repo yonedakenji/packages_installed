@@ -30,8 +30,8 @@ RUN rpm --rebuilddb && \
     libaio.x86_64 hostname.x86_64 numactl-libs.x86_64 \
 
 ### install utilities. ###
-#   sendmail.pl and mysql_install_db need perl.
-    perl.x86_64 patch.x86_64 perl-Data-Dumper.x86_64 bc.x86_64 expect.x86_64
+#   mysql_install_db need perl.
+    perl.x86_64 patch.x86_64 perl-Data-Dumper.x86_64 bc.x86_64 expect.x86_64 
 
 ### install runit. ###
 RUN mkdir /package && \
