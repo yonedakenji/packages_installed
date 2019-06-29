@@ -9,9 +9,9 @@ ARG JDK_VER=1.8.0
 
 WORKDIR /tmp
 
-RUN curl -SL https://www.python.org/ftp/python/${PYTHON_VER}/Python-${PYTHON_VER}.tgz && \
-    curl -SL http://smarden.org/runit/runit-${RUNIT_VER}.tar.gz && \
-    curl -SL https://github.com/balabit/syslog-ng/archive/syslog-ng-${SYSLOGNG_VER}.zip
+RUN curl -OL https://www.python.org/ftp/python/${PYTHON_VER}/Python-${PYTHON_VER}.tgz && \
+    curl -OL http://smarden.org/runit/runit-${RUNIT_VER}.tar.gz && \
+    curl -OL https://github.com/balabit/syslog-ng/archive/syslog-ng-${SYSLOGNG_VER}.zip
 
 ### runit needs these packages. ###
 RUN rpm --rebuilddb && \
