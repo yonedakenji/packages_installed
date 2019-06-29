@@ -9,9 +9,9 @@ ARG JDK_VER=1.8.0
 
 WORKDIR /tmp
 
-RUN curl -L https://www.python.org/ftp/python/${PYTHON_VER}/Python-${PYTHON_VER}.tgz -o Python-${PYTHON_VER}.tgz && \
-    curl -L http://smarden.org/runit/runit-${RUNIT_VER}.tar.gz -o runit-${RUNIT_VER}.tar.gz && \
-    curl -L https://github.com/balabit/syslog-ng/archive/syslog-ng-${SYSLOGNG_VER}.zip -o syslog-ng-${SYSLOGNG_VER}.zip
+RUN curl -LO https://www.python.org/ftp/python/${PYTHON_VER}/Python-${PYTHON_VER}.tgz && \
+    curl -LO http://smarden.org/runit/runit-${RUNIT_VER}.tar.gz && \
+    curl -LO https://github.com/balabit/syslog-ng/releases/download/syslog-ng-${SYSLOGNG_VER}/syslog-ng-${SYSLOGNG_VER}.tar.gz
 
 ### runit needs these packages. ###
 RUN rpm --rebuilddb && \
@@ -31,7 +31,7 @@ RUN rpm --rebuilddb && \
 
 ### install utilities. ###
 #   mysql_install_db need perl.
-    perl.x86_64 patch.x86_64 perl-Data-Dumper.x86_64 bc.x86_64 expect.x86_64 unzip.x86_64
+    perl.x86_64 patch.x86_64 perl-Data-Dumper.x86_64 bc.x86_64 expect.x86_64
 
 ### install runit. ###
 RUN mkdir /package && \
@@ -54,9 +54,8 @@ RUN mkdir /package && \
 
 ### make syslog-ng. ###
 RUN cd /tmp && \
-    unzip syslog-ng-${SYSLOGNG_VER}.zip && \
-    cd syslog-ng-syslog-ng-${SYSLOGNG_VER} && \
-    ./autogen.sh && \
+    tar xfz syslog-ng-${SYSLOGNG_VER}.tar.gz && \
+    cd syslog-ng-${SYSLOGNG_VER} && \
     ./configure --prefix=/usr/local --enable-json=no && \
     make && \
     make install
