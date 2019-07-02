@@ -26,12 +26,11 @@ RUN rpm --rebuilddb && \
 ### syslog-ng needs these packages. ###
     glib2-devel.x86_64 openssl-devel.x86_64 \
 
-### mysql (5.6.19) needs this package. ###
-    libaio.x86_64 hostname.x86_64 numactl-libs.x86_64 \
+### install mariadb. ###
+    mariadb-server.x86_64 \
 
 ### install utilities. ###
-#   mysql_install_db need perl.
-    perl.x86_64 patch.x86_64 perl-Data-Dumper.x86_64 bc.x86_64 expect.x86_64
+    patch.x86_64 bc.x86_64
 
 ### install runit. ###
 RUN mkdir /package && \
