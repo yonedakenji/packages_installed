@@ -1,4 +1,4 @@
-FROM yonedakenji/centos_update:latest
+FROM yonedakenji/centos_updated:latest
 
 MAINTAINER yonedakenji <yon_ken@yahoo.co.jp>
 
